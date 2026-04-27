@@ -1,0 +1,48 @@
+{
+  "skill_name": "brandforge",
+  "skill_path": ".claude/skills/brandforge/SKILL.md",
+  "evals": [
+    {
+      "id": 1,
+      "name": "linkedin-post-existing-brand",
+      "prompt": "Write a LinkedIn post for QuickServe about why restaurant owners should automate their order management instead of relying on manual WhatsApp messages. Brand colors are green #1B4332 and mint #52B788. Voice is direct, practical, no jargon. Top proof point: 500+ restaurants onboarded, setup in 10 minutes.",
+      "expected_output": "A LinkedIn post that: (1) starts with a single bold hook line that stops the scroll, (2) uses the brand voice — direct, practical, human, no generic AI phrases like 'leverage' or 'robust', (3) references the proof point (500+ restaurants) naturally, (4) ends with a clear soft CTA, (5) includes 5-8 relevant hashtags, (6) is 1200-1800 characters total",
+      "assertions": [
+        "Output contains a single-line hook at the top (stops at a blank line)",
+        "Output does NOT contain banned AI words: leverage, robust, delve, furthermore, in addition, it is important to note",
+        "Output mentions '500' or '500+' as proof point",
+        "Output ends with a CTA (question or call to action)",
+        "Output contains hashtags starting with #",
+        "Total character count is between 800 and 2000"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "new-brand-setup-interview",
+      "prompt": "I want to create content for my startup called QuickServe. We help restaurants manage their orders and inventory through a simple WhatsApp bot. Our website is quickserve.app. Please set up the brand profile.",
+      "expected_output": "The skill should: (1) ask all 6 brand setup questions in ONE message (not one at a time), (2) after receiving answers OR proceeding with given info, attempt to crawl quickserve.app, (3) draft a brand config SKILL.md with the brand-slug 'quickserve-brand', (4) present it with confidence labels (✅ found / 🟡 inferred / ⬜ missing), (5) ask for confirmation before saving",
+      "assertions": [
+        "First response asks all setup questions in a single message block",
+        "Does NOT ask questions one-at-a-time across multiple messages",
+        "Attempts WebFetch on quickserve.app",
+        "Draft includes sections: Brand at a Glance, Brand Voice, Visual Identity, Core Services",
+        "Draft uses confidence labels (✅, 🟡, ⬜) to distinguish found vs inferred vs missing data",
+        "Does NOT save the file without user confirmation"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "blog-execution-plan-gate",
+      "prompt": "Write a full blog post for QuickServe about 'How to reduce order errors in your restaurant' — aim for 1500 words, SEO optimized, with a LinkedIn post adaptation too.",
+      "expected_output": "The skill should: (1) show an EXECUTION PLAN before writing anything, (2) the plan must include Brand, Request, Topic, chosen Framework, Deliverables list with depth and image settings, and Files to create, (3) STOP after the plan and wait for 'go', (4) NOT start writing the blog until the user confirms",
+      "assertions": [
+        "First response is an EXECUTION PLAN, not the blog content",
+        "Plan includes the chosen copywriting framework (AIDA, PAS, BAB, LEMA, or 4-Point)",
+        "Plan lists at least two deliverables: blog and linkedin_post",
+        "Plan shows files that will be created (outputs/blogs/... and outputs/social/linkedin/...)",
+        "Plan ends with instruction to reply 'go' before executing",
+        "Blog content is NOT written in the first response"
+      ]
+    }
+  ]
+}
